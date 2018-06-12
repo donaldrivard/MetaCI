@@ -129,6 +129,7 @@ SCHEDULE_CHOICES=(
 class PlanRepository(models.Model):
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
     repo = models.ForeignKey(Repository, on_delete=models.CASCADE)
+    yaml_config = models.TextField(null=True, blank=True, validators=[validate_yaml_field])
 
     class Meta:
         ordering = ['repo', 'plan']
